@@ -34,7 +34,10 @@
     },
     "scripts": {
         "pretest": "node test/support/createdb.js",
-        "test": "mocha -R spec --timeout 200000"
+        "test": "mocha -R spec --timeout 200000 -s 20000"
+    },
+    "devDependencies": {
+        "set-immediate": "*"
     },
     "licenses": [{ "type": "BSD" }],
     "main": "./lib/sqlite3"
