@@ -44,12 +44,7 @@ void Database::Process() {
             Call* call = queue.front();
             Local<Function> cb = NanPersistentToLocal(call->baton->callback);
             if (!cb.IsEmpty() && cb->IsFunction()) {
-                TryCatch try_catch;
-                cb->Call(this->handle(), 1, argv);
-                if (try_catch.HasCaught()) {
-                    FatalException(try_catch);
-                }
-                //TRY_CATCH_CALL(NanObjectWrapHandle(this), cb, 1, argv);
+                TRY_CATCH_CALL(NanObjectWrapHandle(this), cb, 1, argv);
                 called = true;
             }
             queue.pop();
